@@ -13,14 +13,14 @@ const contactPage = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2">
-        <div className="space-y-8">
+        <div className="space-y-8 p-30">
           <h2 className="text-2xl font-semibold mb-4">Get in Touch</h2>
           <p className="text-gray-900 md:w-2/3 m-4">
             I'm available for opportunities as a junior fullstack developer.
             Feel free to reach out to collaborate or chat about tech!
           </p>
           <div>
-            <div className=" flex items-center gap-4">
+            <div className=" flex items-center gap-6">
               <MailIcon className="w-6 h-6 text-blue-500" />
               <div>
                 <h3 className="text-semibold">Email</h3>
@@ -31,7 +31,7 @@ const contactPage = () => {
                 dulcechidembue@gmail.com
               </div>
             </div>
-            <div className=" flex items-center gap-4">
+            <div className=" flex items-center gap-6">
               <Phone className="w-6 h-6 text-blue-500" />
               <div>
                 <h3 className="text-semibold">Phone</h3>
@@ -39,7 +39,7 @@ const contactPage = () => {
                 +258 84525702
               </div>
             </div>
-            <div className=" flex items-center gap-4">
+            <div className=" flex items-center gap-6">
               <MapPin className="w-6 h-6 text-blue-500" />
               <div>
                 <h3 className="text-semibold">Location</h3>
