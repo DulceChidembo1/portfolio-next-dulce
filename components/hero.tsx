@@ -38,7 +38,7 @@ export const Hero = () => {
             {...fadeInUp}
             transition={{ delay: 0.4 }}
           >
-            Junior Full Stack Developer & Enviorment Education
+            Junior Full Stack Developer & Enviormment Education
           </motion.p>
           <motion.div 
             className="flex justify-center space-x-4 mb-8"

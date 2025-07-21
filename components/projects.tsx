@@ -12,7 +12,7 @@ import {
 
 export const Projects = () => {
   return (
-    <section className="py-20">
+    <section className="py-16">
       <div className="container max-w-7xl mx-auto px-4">
         <motion.h2
           className="text-3xl font-bold mb-12 text-center"

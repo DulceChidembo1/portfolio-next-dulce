@@ -1,3 +1,12 @@
+// Exportando fadeInDown e cardHover para uso externo
+export const fadeInDown = {
+  initial: { opacity: 0, y: -40 },
+  animate: { opacity: 1, y: 0 }
+};
+
+export const cardHover = {
+  whileHover: { scale: 1.05, boxShadow: '0 8px 32px rgba(0,0,0,0.12)' }
+};
 export const staggerContainer = {
   animate: {
     transition: {
