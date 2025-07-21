@@ -1,12 +1,5 @@
-const ProjectsPage =() => {
-    return (
-        <>
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
-            <h1>Projects</h1>
-            <p>This is the projects page.</p>
-        </div>
-        </>
-    )
-}
+import { Projects } from '../../components/projects';
 
-export default ProjectsPage;
+export default function ProjectsPage() {
+  return <Projects />;
+}

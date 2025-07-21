@@ -3,8 +3,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Github } from 'lucide-react';
-import { Linkedin } from 'lucide-react';
+import { Github, Linkedin} from 'lucide-react';
 import { motion } from 'framer-motion';
 import { fadeInUp, fadeIn, scaleIn } from '../utils/animations';
 
