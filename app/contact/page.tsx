@@ -1,121 +1,220 @@
-import { Mail, MailIcon, MapPin } from "lucide-react";
-import { Phone } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+'use client'
 
-const contactPage = () => {
+import { useState } from 'react'
+import { Mail, Phone, MapPin } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { fadeInUp, fadeIn, slideInLeft, slideInRight } from '@/utils/animations'
+
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
+type FormStatus = 'idle' | 'loading' | 'success' | 'error';
+
+const   contactPage = () =>  {
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    email: '',
+    message: ''
+  })
+  const [status, setStatus] = useState<FormStatus>('idle')
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setStatus('loading')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) throw new Error('Failed to send message')
+      
+      setStatus('success')
+      setFormData({ name: '', email: '', message: '' })
+    } catch {
+      setStatus('error')
+    }
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }))
+  }
+
   return (
-    <>
-      <div className="container maz-w-7xl mx-auto p-20">
-        <h1 className="text-3xl font-bold mb-5 text-center">Contact-me</h1>
+    <div className="container max-w-7xl mb-4 py-28 dark:text-white">
+      <motion.h1 
+        className="text-4xl font-bold mb-8 text-center dark:text-white"
+        {...fadeInUp}
+      >
+        Contact Me
+      </motion.h1>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        {/* Contact Information */}
+        <motion.div 
+          className="space-y-8"
+          {...slideInLeft}
+        >
+          <motion.div {...fadeInUp}>
+            <h2 className="text-2xl font-semibold mb-auto dark:text-white">Get in Touch</h2>
+            <p className="text-secondary">
+              I&apos;m always open to discussing new projects, creative ideas, or
+              opportunities to be part of your visions.
+            </p>
+          </motion.div>
+          
+          <motion.div 
+            className="space-y-4"
+            variants={fadeIn}
+            initial="initial"
+            animate="animate"
+          >
+            <motion.div 
+              className="flex items-center gap-4"
+              variants={fadeInUp}
+              whileHover={{ x: 10 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <Mail className="h-6 w-6 text-primary" />
+              <div>
+                <h3 className="font-semibold dark:text-white">Email</h3>
+                <a href="mailto:dulcechidembue@gmail.com" className="text-secondary hover:text-primary dark:text-white">
+                  dulcechidembue@gmail.com
+                </a>
+              </div>
+            </motion.div>
+            
+            <motion.div 
+              className="flex items-center gap-4"
+              variants={fadeInUp}
+              whileHover={{ x: 10 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <Phone className="h-6 w-6 text-primary" />
+              <div>
+                <h3 className="font-semibold dark:text-white">Phone</h3>
+                <a href="tel:+258845257902" className="text-secondary hover:text-primary dark:text-white">
+                   (+258) 84 52 579 02
+                </a>
+              </div>
+            </motion.div>
+            
+            <motion.div 
+              className="flex items-center gap-4"
+              variants={fadeInUp}
+              whileHover={{ x: 10 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <MapPin className="h-6 w-6 text-primary" />
+              <div>
+                <h3 className="font-semibold dark:text-white">Location</h3>
+                <p className="text-secondary">Malhangalene, Cidade de Maputo</p>
+              </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+        
+        {/* Contact Form */}
+        <motion.div 
+          className="p-6 rounded-lg shadow-md"
+          {...slideInRight}
+        >
+          <motion.form 
+            onSubmit={handleSubmit} 
+            className="space-y-6"
+            variants={fadeIn}
+            initial="initial"
+            animate="animate"
+          >
+            <motion.div variants={fadeInUp}>
+              <label htmlFor="name" className="block text-sm font-medium mb-2 dark:text-white">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent"
+              />
+            </motion.div>
+            
+            <motion.div variants={fadeInUp}>
+              <label htmlFor="email" className="block text-sm font-medium mb-2 dark:text-white">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent"
+              />
+            </motion.div>
+            
+            <motion.div variants={fadeInUp}>
+              <label htmlFor="message" className="block text-sm font-medium mb-2 dark:text-white">
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                rows={4}
+                className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent"
+              />
+            </motion.div>
+            
+            <motion.button
+              type="submit"
+              disabled={status === 'loading'}
+              className="w-full btn btn-primary"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              {status === 'loading' ? 'Sending...' : 'Send Message'}
+            </motion.button>
+            
+            {status === 'success' && (
+              <motion.p 
+                className="text-green-500 text-center"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
+                Message sent successfully!
+              </motion.p>
+            )}
+            
+            {status === 'error' && (
+              <motion.p 
+                className="text-red-500 text-center"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
+                Failed to send message. Please try again.
+              </motion.p>
+            )}
+          </motion.form>
+        </motion.div>
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2">
-        <div className="space-y-8 p-30">
-          <h2 className="text-2xl font-semibold mb-4">Get in Touch</h2>
-          <p className="text-gray-900 md:w-2/3 m-4">
-            I'm available for opportunities as a junior fullstack developer.
-            Feel free to reach out to collaborate or chat about tech!
-          </p>
-          <div>
-            <div className=" flex items-center gap-6">
-              <MailIcon className="w-6 h-6 text-blue-500" />
-              <div>
-                <h3 className="text-semibold">Email</h3>
-                <link
-                  href="mailto:dulcechidembue@gmail.com"
-                  className="text-blue-600"
-                />
-                dulcechidembue@gmail.com
-              </div>
-            </div>
-            <div className=" flex items-center gap-6">
-              <Phone className="w-6 h-6 text-blue-500" />
-              <div>
-                <h3 className="text-semibold">Phone</h3>
-                <link href="tel:+25884525702" className="text-blue-600" />
-                +258 84525702
-              </div>
-            </div>
-            <div className=" flex items-center gap-6">
-              <MapPin className="w-6 h-6 text-blue-500" />
-              <div>
-                <h3 className="text-semibold">Location</h3>
-                <p>Maputo, Mozambique</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <Card className="w-full max-w-md shadow-2xl border-none bg-white/90 dark:bg-[#232c47] dark:text-white">
-            <CardContent>
-              <form>
-                <div className="flex flex-col gap-5">
-                  <div className="grid gap-2">
-                    <Label htmlFor="name">
-                      <span className="font-bold">Name</span>{" "}
-                    </Label>
-                    <Input
-                      id="name"
-                      type="text"
-                      required
-                      className="rounded-md border border-blue-700 focus:ring-2 focus:ring-blue-400 bg-white dark:bg-[#28335a] dark:text-white dark:border-blue-400"
-                    />
-                  </div>
-                  <div className="grid gap-2">
-                    <Label htmlFor="email">
-                      <span className="font-bold">E-mail</span>{" "}
-                    </Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      required
-                      className="rounded-md border border-blue-700 focus:ring-2 focus:ring-blue-400 bg-white dark:bg-[#28335a] dark:text-white dark:border-blue-400"
-                    />
-                  </div>
-
-                  <div className="grid gap-2">
-                    <Label htmlFor="subject">
-                      <span className="font-bold">Subject</span>{" "}
-                    </Label>
-                    <Input
-                      id="subject"
-                      type="text"
-                      required
-                      className="rounded-md border border-blue-700 focus:ring-2 focus:ring-blue-400 bg-white dark:bg-[#28335a] dark:text-white dark:border-blue-400"
-                    />
-                  </div>
-                  <div className="grid gap-2">
-                    <Label htmlFor="description">
-                      <span className="font-bold">Description</span>{" "}
-                    </Label>
-                    <textarea
-                      id="description"
-                      name="description"
-                      rows={4}
-                      required
-                      className="rounded-md border border-blue-700 focus:ring-2 focus:ring-blue-400 bg-white py-2 px-4"
-                    />
-                  </div>
-                </div>
-                <CardFooter className="flex-col gap-2 px-0">
-                  <Button
-                    type="submit"
-                    className="w-full mt-6 rounded-full bg-blue-900 text-white font-semibold hover:scale-105 hover:bg-blue-800 transition"
-                  >
-                    Submit
-                  </Button>
-                </CardFooter>
-              </form>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-    </>
-  );
-};
+    </div>
+  )
+} 
 
 export default contactPage;

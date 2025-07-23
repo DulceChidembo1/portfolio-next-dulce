@@ -1,3 +1,13 @@
+// Animações de entrada lateral
+export const slideInLeft = {
+  initial: { opacity: 0, x: -60 },
+  animate: { opacity: 1, x: 0 }
+};
+
+export const slideInRight = {
+  initial: { opacity: 0, x: 60 },
+  animate: { opacity: 1, x: 0 }
+};
 // Exportando fadeInDown e cardHover para uso externo
 export const fadeInDown = {
   initial: { opacity: 0, y: -40 },

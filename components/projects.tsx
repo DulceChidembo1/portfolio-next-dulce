@@ -15,7 +15,7 @@ export const Projects = () => {
     <section className="py-16">
       <div className="container max-w-7xl mx-auto px-4">
         <motion.h2
-          className="text-3xl font-bold mb-12 text-center"
+          className="text-3xl font-bold mb-12 py-12 text-center dark:text-white"
           {...fadeInUp}
         >
           My Projects and Colaborate Projects

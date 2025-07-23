@@ -15,7 +15,7 @@ const About = () => {
   return (
     <div className="container max-w-7xl mx-auto py-30">
       <motion.h1
-        className="text-4xl font-bold mb-10 text-center"
+        className="text-4xl font-bold mb-10 text-center dark:text-white"
         {...fadeInDown}
       >
         About Me
@@ -23,17 +23,18 @@ const About = () => {
 
       {/* Bio Section */}
       <motion.section className="mb-16" {...fadeInUp}>
-        <p className="text-lg text-secondary max-w-3xl mx-auto text-center">
-          I&apos;m a passionate Full Stack Developer with expertise in building
-          modern web applications. With a strong foundation in both frontend and
-          backend technologies, I create seamless user experiences and robust
-          server-side solutions.
+        <p className="text-lg text-secondary max-w-3xl mx-auto text-center dark:text-white">
+          I&apos;m Junior Fullstack Developer with a background in
+          Environmental Education. I have experience in web development (React,
+          Node.js, TypeScript) . I enjoy building practical solutions that connect
+          technology with social impact. I'm always looking to learn,
+          collaborate, and grow professionally.
         </p>
       </motion.section>
 
       {/* Skills Section */}
       <motion.section className="mb-16" {...fadeIn} transition={{ delay: 0.2 }}>
-        <motion.h2 className="section-title" {...fadeInUp}>
+        <motion.h2 className="section-title dark:text-white" {...fadeInUp}>
           Skills
         </motion.h2>
         <motion.div
@@ -43,12 +44,12 @@ const About = () => {
           animate="animate"
         >
           <motion.div
-            className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md"
+            className="p-6 rounded-lg shadow-md"
             variants={fadeInUp}
             {...cardHover}
           >
             <Code className="h-8 w-8 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Frontend</h3>
+            <h3 className="text-xl font-semibold mb-2 dark:text-white">Frontend</h3>
             <ul className="text-secondary space-y-2">
               <li>React / Next.js</li>
               <li>TypeScript</li>
@@ -58,12 +59,12 @@ const About = () => {
           </motion.div>
 
           <motion.div
-            className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md"
+            className="p-6 rounded-lg shadow-md"
             variants={fadeInUp}
             {...cardHover}
           >
             <Laptop className="h-8 w-8 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Backend</h3>
+            <h3 className="text-xl font-semibold mb-2 dark:text-white">Backend</h3>
             <ul className="text-secondary space-y-2">
               <li>Node.js</li>
               <li>Express</li>
@@ -72,12 +73,12 @@ const About = () => {
           </motion.div>
 
           <motion.div
-            className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md"
+            className="p-6 rounded-lg shadow-md"
             variants={fadeInUp}
             {...cardHover}
           >
             <GraduationCap className="h-8 w-8 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Tools & Others</h3>
+            <h3 className="text-xl font-semibold mb-2 dark:text-white">Tools & Others</h3>
             <ul className="text-secondary space-y-2">
               <li>Git / GitHub</li>
             </ul>
@@ -87,7 +88,7 @@ const About = () => {
 
       {/* Experience Section */}
       <motion.section className="mb-16" {...fadeIn} transition={{ delay: 0.4 }}>
-        <motion.h2 className="section-title" {...fadeInUp}>
+        <motion.h2 className="section-title dark:text-white" {...fadeInUp}>
           Experience
         </motion.h2>
         <motion.div
@@ -97,40 +98,21 @@ const About = () => {
           animate="animate"
         >
           <motion.div
-            className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md"
+            className="p-6 rounded-lg shadow-md"
             variants={fadeInUp}
             {...cardHoverSmall}
           >
-            <h3 className="text-xl font-semibold mb-2">
+            <h3 className="text-xl dark:text-white font-semibold mb-2">
               Junior Full Stack Developer
             </h3>
-            <p className="text-primary mb-2">Company Name • 2020 - Present</p>
+            <p className="text-primary mb-2">Bytes4Future - 2025</p>
             <ul className="text-secondary list-disc list-inside space-y-2">
+              <li>Developed web applications using React and Node.js</li>
               <li>
-                Led development of multiple web applications using React and
-                Node.js
+                Collaborated with designers to implement responsive UI/UX
+                designs
               </li>
-              <li>
-                Implemented CI/CD pipelines reducing deployment time by 50%
-              </li>
-              <li>Mentored junior developers and conducted code reviews</li>
-            </ul>
-          </motion.div>
-
-          <motion.div
-            className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md"
-            variants={fadeInUp}
-            {...cardHoverSmall}
-          >
-            <h3 className="text-xl font-semibold mb-2">Full Stack Developer</h3>
-            <p className="text-primary mb-2">Previous Company • 2018 - 2020</p>
-            <ul className="text-secondary list-disc list-inside space-y-2">
-              <li>Developed and maintained RESTful APIs</li>
-              <li>
-                Built responsive user interfaces with modern JavaScript
-                frameworks
-              </li>
-              <li>Optimized database queries improving performance by 40%</li>
+              <li> Assisted in database management and API integration</li>
             </ul>
           </motion.div>
         </motion.div>
@@ -138,7 +120,7 @@ const About = () => {
 
       {/* Education Section */}
       <motion.section {...fadeIn} transition={{ delay: 0.6 }}>
-        <motion.h2 className="section-title" {...fadeInUp}>
+        <motion.h2 className="section-title dark:text-white" {...fadeInUp}>
           Education
         </motion.h2>
         <motion.div
@@ -148,18 +130,23 @@ const About = () => {
           animate="animate"
         >
           <motion.div
-            className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md"
+            className="p-6 rounded-lg shadow-md"
             variants={fadeInUp}
             {...cardHoverSmall}
           >
-            <h3 className="text-xl font-semibold mb-2">
+            <h3 className="text-xl dark:text-white font-semibold mb-2">
               Bachelor’s Degree in Environmental Education
             </h3>
-            <p className="text-primary mb-2">Universidade Eduardo Mondlane 2019-2023</p>
-            <h4 className="text-xl font-semibold mb-2">
+            <p className="text-primary  mb-2">
+              Universidade Eduardo Mondlane 2019-2023
+            </p>
+            <h4 className="text-xl dark:text-white font-semibold mb-2">
               junior Full Stack Developer
             </h4>
-            <h1 className="text-primary mb-2"> BytesForFuture-Mocambique- 2025</h1>
+            <h1 className="text-primary mb-2">
+              {" "}
+              BytesForFuture-Mocambique- 2025
+            </h1>
           </motion.div>
         </motion.div>
       </motion.section>

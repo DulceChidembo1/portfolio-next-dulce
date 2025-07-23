@@ -15,12 +15,29 @@ export const Header = () => {
     { label: "Contact", href: "/contact" },
   ];
 
+  // Ler preferência do localStorage ao carregar
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      setIsDark(true);
+    } else if (savedTheme === "light") {
+      setIsDark(false);
+    } else {
+      // Detectar preferência do sistema
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      setIsDark(prefersDark);
+    }
+  }, []);
+
+  // Aplicar dark/light e salvar no localStorage
   useEffect(() => {
     const root = window.document.documentElement;
     if (isDark) {
       root.classList.add("dark");
+      localStorage.setItem("theme", "dark");
     } else {
       root.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
   }, [isDark]);
 
@@ -35,7 +52,7 @@ export const Header = () => {
               <a
                 href={item.href}
                 className={
-                  pathname === item.href ? "text-primary" : "hover:text-primary"
+                  (pathname === item.href ? "text-primary" : "hover:text-primary") + " dark:text-white"
                 }
               >
                 {item.label}
@@ -64,7 +81,7 @@ export const Header = () => {
                     <a
                       href={item.href}
                       className={
-                        "block px-4 py-2 text-secondary hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" +
+                        "block px-4 py-2 text-secondary hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors dark:text-white" +
                         (pathname === item.href ? " text-primary font-semibold" : "")
                       }
                       onClick={() => setMenuOpen(false)}
