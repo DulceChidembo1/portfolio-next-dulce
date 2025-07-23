@@ -24,7 +24,7 @@ export const projects: Project[] = [
 },
 {
     title: "bytes-Go",
-    description: "O projecto coniste em um sistema que busca resolver um problema de uma empresa Moçambicana que faz táxi por aplicativo.é um projecto colaborativo desenvolvido por alunos do programa Bytes 4 Future para praticar JavaScript.",
+    description: "O projecto coniste em um sistema que busca resolver um problema de uma empresa Moçambicana que faz táxi por aplicativo.é um projecto colaborativo desenvolvido por alunos do programa Bytes 4 Future.",
     image: "/ecomerce.jpg",
     link: "https://github.com/LucoVilanculos/bytes-go.git",
     technologies: ["ts", "html", "tailwindcss", "nodejs", "expressjs"],
